@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'poppins', sans-serif; /*san-serif is applied if poppins doesnt work at any situation*/
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 4rem;
+    scroll-behavior: smooth;
+    list-style: none; /*remove the bullets in the unordered list*/
+    text-decoration: none; /*removes the underline in the unordered-list*/
+}
+
+:root { /*commonly added css styling for the whole web-page*/
+    --paragraph-font-family: system-ui;
+    --main-color: #bc9667;
+    --secondary-color: #edeae3;
+    --text-color: #1b1b1b;
+    --bg-color: #fff;
+
+    --box-shadow: 2px 2px 10px 14px rgb(14 55 54 / 15%);
+    /*--font-family: cursive;*/
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    color: var(--text-color);
+}
+
+section { /*tag. no need to add any identity*/
+    padding: 10px 100px;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    color: var(--text-color);
+}
+
+header { /*its not require to and any symbol when decorating a tag*/
+    position: fixed;
+    width: 100%; /*take the width of the header from 100% of the webpage*/
+    top: 0; /*make the psotion 0 from the top*/
+    right: 0; /*stop the moving from the web site from right to left*/
+    z-index: 1000; /*the things which has a higher z index never get overlap*/
+    display: flex; /*take the all the icons in the header tag into an one line*/
+    justify-content: space-between;
+    align-items: center;
+    /*boder: 1px solid black;*/
+    padding: 18px 100px;
+    /*adjust the gap between the border and the content this gives 18px
+        space from the top and bottom and 100px space from to and right side.(see the note)*/
+    /*background: var(--text-color);*/
+    background: var(--text-color);
+    transition: 0.5s linear;
+}
+
+.logo img {
+    width: 60px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    padding: 8px 17px;
+    /*items in the navbar is atached to eachother and by adding a padding
+       we creare a space between those items*/
+    color: var(--bg-color);
+    font-size: 1rem; /*This is the deafult font-size*/
+    text-transform: uppercase;
+    font-weight: 500; /*this gives a thickness to the letters in the nav-bar*/
+}
+
+.navbar a:hover { /*This gives a hover effect to the icons in the navbar*/
+    background-color: var(--main-color);
+    border-radius: 0.2rem;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    /*this gives an idea about the timming which requires to complete
+        the transition. In this case it takes 0.5s to complete the transition*/
+    transition-timing-function: linear;
+    /*this gives an idea about the occuring of the transition . As an
+        example whether the transition start slowly and the speed increases gradually or , whether
+        the speed of the transition equal during the whole time of the process and ect.*/
+    transition-delay: 1s;
+    /*this tells the time which the transition takes to appear.In here
+        it takes 1s to start the hover effect after taking the mouse on to the text field.*/
+    transition: 0.5s all linear;
+    /*above all the transition functions can be represenrted from
+        an one statement. The order here is transition-timing-fuction , all(the things which need to
+        add to the transition in here transition needs to add background-color and a border-radius),
+        transition-timing-function*/
+}
+
+.header-icon {
+    font-size: 22px;
+    /*we have copied a text for the crat icon and for the search icon. Thats
+        why we change the font-size here*/
+    cursor: pointer; /*make the cursor in to a finger when we take the cursor on to the text*/
+    z-index: 100000;
+    display: flex;
+    column-gap: 0.8rem; /*this change the gap between the crat icon and the column icon*/
+}
+
+.header-icon .bx {
+    color: var(--bg-color);
+    /*this also import as a font. Therefore it can also change as color
+        because the color of a font is changed by using the color*/
+}
+
+#menu-icon {
+    color: var(--bg-color);
+    font-family: Italiannno;
+    font-size: 24px;
+    z-index: 100001;
+    cursor: pointer;
+    display: none; /*hidding the menu icon in the display mode*/
+}
+
+.search-box {
+    position: absolute;
+    /*adjust the position relavant to the parent element. In here the
+       parent element is header*/
+    top: -100%;
+    /*100% navigate to the bottom from parent element and since this is -100 this
+    make the search box hide in the top from the header*/
+    left: 50%; /*go to the 50% of the right side from the left side*/
+    transform: translate(-50%);
+    /*take the search bar to the middle of the web-page(see the note
+        also)*/
+    background: var(--bg-color);
+    width: 100%; /*positioned the search box to the corner of the web-page*/
+    /*border: none;
+    outline: none*/
+}
+
+.search-box.active {
+    top: 110%; /*this make the search box come from the header to 110%*/
+    box-shadow: var(--box-shadow);
+    transition-property: top;
+    transition-duration: 0.25s;
+    transition-timing-function: linear;
+
+
+}
+
+/*decorate the input-tag in the search box*/
+.search-box input {
+    /*input is a tag and thats why we didnt add any id to the infront of
+         the input*/
+    padding: 20px; /*adding 20px from the all sides(top,bottom,right,left)*/
+    border: none;
+    outline: none;
+    /*outline is the one which appears after clicking the search box. By
+             making it none remove this effect also*/
+    width: 100%;
+    font-size: 1rem; /*the size of the letter which is typed in inside the search-box*/
+    color: var(--main-color);
+}
+
+.search-box input::placeholder {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.home {
+    width: 100%;
+    min-height: 100vh;
+    /*make the home page height to the full web
+        page height*/
+    background: url(../img/main.jpg);
+    background-repeat: no-repeat;
+    /*stop the repeating of the
+        background image*/
+    background-size: cover;
+    /*resize the background image for
+        the full web page height and weight*/
+    background-position: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, auto));
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.home-text h1 {
+    font-size: 3.4rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.home-text p {
+    font-size: 0.938rem;
+    color: var(--bg-color);
+    margin: 0.5rem 0 1.4rem;
+}
+
+/*in here anchor tag is decorated as a button*/
+.btn {
+    padding: 10px 40px;
+    border-radius: 0.3rem;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    font-weight: 500;
+}
+
+/*adding hover effect to the shop-now button*/
+.btn:hover {
+    background: #8a6f4d;
+    /*this gives darker effect to the button when the
+        button take on to the button*/
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0.5rem 0 1.1rem;
+}
+
+.about-image img {
+    border-radius: 0.5rem;
+}
+
+.about-text h2 {
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+.about-text p {
+    font-size: 16px;
+    margin: 0.5rem 0 1.1rem;
+    font-family: var(--paragraph-font-family);
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading h2 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.product-container .box {
+    position: relative; /*make the new position relative to the older position of the item*/
+    padding: 10px;
+    display: flex; /*images and words are align to the same row*/
+    flex-direction: column; /*elements come to under the same column*/
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.product-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    object-position: center; /*position the image to the center of the box*/
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 0.5rem;
+}
+
+.product-container .box {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0.5rem 0.5rem;
+}
+
+.product-container .box .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.product-container .box .content span {
+    padding: 0 1rem;
+    color: var(--bg-color);
+    background: var(--main-color);
+    border-radius: 4px;
+    font-weight: 500
+}
+
+.product-container .box .content a {
+    border: 2px solid var(--main-color);
+    padding: 1rem;
+    color: var(--text-color);
+    border-radius: 4px; /*if we put 50% then the whole button convert into a circle*/
+    text-transform: uppercase;
+}
+
+.product-container .box .content a:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    transition: 0.25s all linear;
+    /*the transition is applied to both of the
+        background of the button and the color of the button*/
+    /* transition-property: background-color;
+     transition-duration: 2s;
+     transition-timing-function: linear;
+    transition-delay: 4s;*/
+}
+
+.customers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.customers-container .box {
+    padding: 20px;
+    box-shadow: var(--box-shadow); /*this create a shadow around the border*/
+    border-radius: 0.5rem;
+    text-align: center; /*take the text into the middle of the text*/
+}
+
+.customers-container .box p {
+    font-size: 0.93rem;
+}
+
+.customers-container .box h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0 0.5rem;
+}
+
+.customers-container .box img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover; /*fit the images to the border radius*/
+}
+
+.stars .bx {
+    color: var(--main-color);
+}
+
+.customers-container .box:hover {
+    background-color: var(--secondary-color);
+    transform: scale(105%);
+    transition: 1s all linear;
+    /* transition-property: background-color;
+     transition-duration: 1s;
+     transition-timing-function: linear;*/
+}
+
+.footer {
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit,minmax(240px,auto));*/
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.footer-box h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.footer-box p {
+    font-size: 0.938rem;
+    margin-bottom: 10px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem; /*this gives a gap between social icons*/
+}
+
+.social a .bx {
+    font-size: 24px;
+    color: var(--text-color);
+    padding: 10px;
+    background: var(--secondary-color);
+    border: 0.2rem;
+}
+
+.social a .bx:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+.social i {
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+.footer-box h3 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.footer-box li a {
+    color: var(--text-color);
+}
+
+.footer-box li a:hover {
+    color: var(--main-color);
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.contact span {
+    display: flex;
+    align-items: center;
+}
+
+.contact i {
+    font-size: 20px;
+    margin-right: 1rem;
+}
+
+.copyright {
+    padding: 20px;
+    text-align: left;
+    background: var(--secondary-color);
+
+}
+
+@keyframes coffee { /*adding animation*/
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(100%);
+    }
+}
+
+.home-img img {
+    animation: coffee 7s infinite linear;
+    /*animation-name: coffee;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 4s;/*animation started after 4s of loading the webpage*/
+}
+
+@media (max-width: 1058px ) {
+    /*this tells about the changes which need to do
+    to the web page when the width of the web page is lesser than 1058px*/
+    header {
+        padding: 16px 60px;
+        /*reduce the padding of the header tag by 16px
+                from the top and bottom and 60px from the left and right*/
+    }
+
+    section {
+        padding: 50px 60px;
+    }
+
+    .home-text {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 991px) {
+    header {
+        padding: 16px 4%;
+    }
+
+    section {
+        padding: 50px 4%;
+    }
+
+    .home-text h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 12px 4%;
+    }
+
+    #menu-icon {
+        display: initial; /*to display the menu icon*/
+    }
+
+    .navbar {
+        /*this helps to make the changes to the nav bar . Check the
+            note to to see the position of the nav bar */
+        position: absolute;
+        top: -570px;
+        /*to take the nav bar 570px upper  direction compare to its parent
+                element. In this case it is the parent element is h1.*/
+        left: 0; /*make the left margin zero*/
+        right: 0; /*make the right margin zero*/
+        display: flex;
+        flex-direction: column;
+        background-color: var(--secondary-color);
+        /*make the color of the
+                nav bar to the secondary color*/
+        row-gap: 1.4rem;
+        /*items which is presented in the nav bar(home, about and
+                ect ) are placed as one column and 4 rows. This code helps to change
+                the row gap of the nav bar*/
+        padding: 20px;
+        transition: 0.3s;
+        text-align: center;
+    }
+
+    .navbar a {
+        color: var(--text-color);
+    }
+
+    .navbar a:hover {
+        color: var(--bg-color);
+    }
+
+    .navbar.active {
+        top: 100% /*Come to the down from the top when clicking the nav bar.js code for this is already written inthe JS */
+    }
+
+    .about {
+        align-items: center;
+    }
+
+    @media (max-width: 360px) {
+        header {
+            padding: 11px 4%;
+        }
+
+        .logo img {
+            width: 45px;
+        }
+
+        .home-text {
+            padding-top: 15px;
+        }
+
+        .home-text h1 {
+            font-size: 1.4rem;
+        }
+
+        .home-text p {
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+
+        .about .img {
+            /*this can use to change the position of the image tag.
+        the paragraph and the learn more tag display before the image*/
+            order: 2;
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-text h2 {
+            font-size: 1.2rem;
+        }
+
+        .heading h2 { /*our popular products*/
+            font-size: 1.2rem;
+        }
+
+        .heading h2 {
+            font-size: 1.2rem;
+        }
+
+    }
+}
+
